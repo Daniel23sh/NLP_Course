@@ -1,0 +1,144 @@
+{
+  "version": "v2_label_after_generation",
+  "target_role": "Junior Software Developer",
+  "profile_mix": {
+    "realistic_correlated": 0.7,
+    "mixed_plausible": 0.2,
+    "edge_case": 0.1
+  },
+  "answer_lengths": ["short", "medium", "long"],
+  "max_retries": 2,
+  "ood_domains": ["NLP course project", "general coursework"],
+  "question_bank": [
+    {
+      "question_type": "general_reflection",
+      "project_domain": "general coursework",
+      "question": "Tell me about something you learned during your studies."
+    },
+    {
+      "question_type": "project_overview",
+      "project_domain": "React web app",
+      "question": "Tell me about a software project you worked on."
+    },
+    {
+      "question_type": "technical_challenge",
+      "project_domain": "backend API",
+      "question": "Describe a technical problem you solved in a project."
+    },
+    {
+      "question_type": "debugging_story",
+      "project_domain": "mobile app",
+      "question": "Describe a project where you had to debug a difficult issue."
+    },
+    {
+      "question_type": "design_decision",
+      "project_domain": "data analysis dashboard",
+      "question": "Tell me about a technical decision you made in a project."
+    },
+    {
+      "question_type": "failure_or_learning",
+      "project_domain": "NLP course project",
+      "question": "Tell me about a project where something did not work at first and what you learned."
+    },
+    {
+      "question_type": "teamwork_conflict",
+      "project_domain": "machine learning project",
+      "question": "Describe a project where you collaborated with others but had a clear personal contribution."
+    },
+    {
+      "question_type": "performance_improvement",
+      "project_domain": "database system",
+      "question": "Tell me about a time you improved an application or system."
+    },
+    {
+      "question_type": "leadership_or_ownership",
+      "project_domain": "automation script",
+      "question": "Tell me about a project task where you took ownership."
+    },
+    {
+      "question_type": "tradeoff_explanation",
+      "project_domain": "full-stack student platform",
+      "question": "Describe a project where you had to choose between two technical approaches."
+    },
+    {
+      "question_type": "feature_delivery_under_constraint",
+      "project_domain": "analytics reporting tool",
+      "question": "Tell me about a feature you delivered under a constraint."
+    },
+    {
+      "question_type": "automation_ownership",
+      "project_domain": "CLI tool",
+      "question": "Tell me about a command-line or scripting tool you worked on."
+    },
+    {
+      "question_type": "integration_story",
+      "project_domain": "API integration",
+      "question": "Describe a project where you connected two systems or services."
+    },
+    {
+      "question_type": "testing_story",
+      "project_domain": "testing framework",
+      "question": "Tell me about a project where testing changed how you built the feature."
+    },
+    {
+      "question_type": "deployment_story",
+      "project_domain": "DevOps/deployment task",
+      "question": "Tell me about a project where deployment or environment setup was part of the work."
+    },
+    {
+      "question_type": "extension_project",
+      "project_domain": "browser extension",
+      "question": "Tell me about a browser extension or small tool project you worked on."
+    },
+    {
+      "question_type": "data_pipeline_story",
+      "project_domain": "data pipeline",
+      "question": "Describe a project where you processed or moved data between steps."
+    },
+    {
+      "question_type": "game_project",
+      "project_domain": "simple game project",
+      "question": "Tell me about a small game or interactive project you built."
+    },
+    {
+      "question_type": "file_processing_story",
+      "project_domain": "file processing utility",
+      "question": "Tell me about a utility you made to process files or repetitive tasks."
+    },
+    {
+      "question_type": "presentation_activity",
+      "project_domain": "presentation project",
+      "question": "Tell me about a presentation or class project you worked on."
+    },
+    {
+      "question_type": "team_activity",
+      "project_domain": "non-software team activity",
+      "question": "Tell me about a team activity or group project from school."
+    },
+    {
+      "question_type": "documentation_activity",
+      "project_domain": "documentation task",
+      "question": "Tell me about a task where you documented or summarized work."
+    },
+    {
+      "question_type": "planning_activity",
+      "project_domain": "planning-only project",
+      "question": "Tell me about a project where planning was the main activity."
+    },
+    {
+      "question_type": "school_assignment",
+      "project_domain": "simple school assignment",
+      "question": "Tell me about a school assignment you worked on."
+    },
+    {
+      "question_type": "volunteer_activity",
+      "project_domain": "volunteer event organization",
+      "question": "Tell me about an organized activity or volunteer project."
+    },
+    {
+      "question_type": "design_mockup",
+      "project_domain": "design mockup without implementation",
+      "question": "Tell me about a design or planning project you worked on."
+    }
+  ]
+}

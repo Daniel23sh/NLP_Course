@@ -1,0 +1,72 @@
+{
+  "version": "v1",
+  "scale": {
+    "1": "absent or almost absent",
+    "2": "weak",
+    "3": "partial or acceptable",
+    "4": "good",
+    "5": "strong"
+  },
+  "aspects": {
+    "technical_depth": {
+      "definition": "Whether the answer demonstrates junior-appropriate technical reasoning, implementation detail, debugging, tradeoffs, or constraints.",
+      "scores": {
+        "1": "No meaningful technical content.",
+        "2": "Mentions tools or terms but gives little real explanation.",
+        "3": "Gives a basic technical explanation of the problem and solution.",
+        "4": "Shows solid implementation, debugging, testing, decision, or tradeoff detail.",
+        "5": "Shows strong junior-level depth with constraints, alternatives, evidence, or debugging detail."
+      }
+    },
+    "personal_contribution": {
+      "definition": "Whether it is clear what the candidate personally did.",
+      "scores": {
+        "1": "The candidate's own role is absent or hidden behind vague team language.",
+        "2": "The candidate helped, but their exact contribution is weak or unclear.",
+        "3": "The candidate describes a clear personal task or responsibility.",
+        "4": "The candidate explains specific actions they personally took and how they collaborated.",
+        "5": "The candidate gives a strong, credible account of their own contribution while staying junior-realistic."
+      }
+    },
+    "clarity": {
+      "definition": "Whether the answer is understandable, concrete enough, and organized well enough to follow.",
+      "scores": {
+        "1": "Hard to follow, scattered, or missing the basic story.",
+        "2": "Some understandable parts, but weak organization or vague wording.",
+        "3": "Understandable with a basic situation/action/result flow.",
+        "4": "Well organized, concrete, and easy to follow.",
+        "5": "Concise, structured, specific, and very clear."
+      }
+    },
+    "problem_solving": {
+      "definition": "Whether the answer describes a reasoning, troubleshooting, decision, or iteration process.",
+      "scores": {
+        "1": "No real problem-solving process is described.",
+        "2": "Mentions a problem, but gives little reasoning about how it was approached.",
+        "3": "Describes a basic troubleshooting or decision process.",
+        "4": "Explains steps, evidence, alternatives, or tradeoffs used to solve the issue.",
+        "5": "Gives a strong junior-level reasoning trail with tests, observations, iterations, or lessons."
+      }
+    },
+    "impact": {
+      "definition": "Whether the answer explains a project-level result, value, improvement, delivery outcome, user/team benefit, or measurable effect from the work. Personal learning alone can support a mid score, but not high project impact.",
+      "scores": {
+        "1": "No result, learning, or impact is stated.",
+        "2": "A result is implied or mentioned vaguely, but the impact is weak or unclear.",
+        "3": "Describes a clear result or personal learning outcome, but project impact is limited or not strongly supported.",
+        "4": "Shows meaningful impact, improvement, delivery, or value for the project, team, or users.",
+        "5": "Demonstrates strong and convincing project impact with measurable outcomes, clear user/team value, deployment, adoption, or performance improvement."
+      }
+    },
+    "role_relevance": {
+      "definition": "Whether the answer addresses the interview question and fits a Junior Software Developer role.",
+      "scores": {
+        "1": "Mostly generic, unfocused, or misses the requested interview angle.",
+        "2": "Somewhat related, but indirect, incomplete, non-software, or focused on generic teamwork, planning, presentation, organization, or personal learning.",
+        "3": "Addresses the question in a basic way or has weak project context, but lacks concrete software-development evidence.",
+        "4": "Clearly addresses the question with a relevant junior developer example supported by concrete software-development evidence such as coding, implementation, debugging, testing, APIs, databases, frontend/backend work, deployment, model training, technical decisions, architecture, or performance work.",
+        "5": "Directly and strongly answers the question with a well-matched junior software project example and clear software-development evidence."
+      }
+    }
+  }
+}
