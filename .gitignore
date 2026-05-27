@@ -1,0 +1,13 @@
+.DS_Store
+.env
+sources/
+docs/project_source_of_truth.md
+__pycache__/
+*.pyc
+
+synthetic_interview_data/data/raw/**/*.jsonl
+synthetic_interview_data/data/processed/**/*.jsonl
+synthetic_interview_data/data/reviewed/**/*.jsonl
+
+synthetic_interview_data/results/
+synthetic_interview_data/outputs/
