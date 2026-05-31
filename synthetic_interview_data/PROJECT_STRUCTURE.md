@@ -154,7 +154,7 @@ interview_answer_scoring/
 ## How To Use This Guide
 
 - Keep data-generation artifacts under `data/`.
-- Put human-reviewed labels under `data/reviewed/` when they exist.
+- Put project-team reviewed evaluation labels and review audit files under `data/reviewed/`.
 - Put training/evaluation outputs under `outputs/`, not under `data/`.
 - Put course-facing summaries under `reports/`.
 - Keep future baseline, model, and evaluation code separated by purpose.

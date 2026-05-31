@@ -68,8 +68,10 @@
 - Manual review required for dev/test/OOD: yes
 - Ready to start baseline training: yes
 
+Note: This report describes the synthetic accepted dataset and original review-candidate splits. For final evaluation, use the project-team reviewed files under `data/reviewed/` and the separate `manual_review_quality` report.
+
 ## Recommended Next Actions
 
-- Manually verify dev/test/OOD review candidates before final evaluation.
+- Use the project-team reviewed dev/test/OOD files under `data/reviewed/` for final evaluation.
 - Inspect any remaining low/mid/high coverage gaps before model training.
 - Keep profile_mismatch and rejected examples for error analysis only.
