@@ -272,6 +272,17 @@ Run tests:
 python3 -m unittest discover -s tests -v
 ```
 
+## Baseline Experiments
+
+Run initial baselines:
+
+```bash
+cd synthetic_interview_data
+python3 scripts/run_baselines.py
+```
+
+This evaluates majority and TF-IDF logistic regression baselines on the project-team reviewed dev/test/OOD files.
+
 Run a cheap mock build:
 
 ```bash
