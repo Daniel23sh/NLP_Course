@@ -6,7 +6,7 @@ For the full project overview, start with the root [README.md](../README.md). Th
 
 The task is to convert a free-text interview answer into a structured quality assessment across six rubric aspects. This package focuses on controlled synthetic data generation, label-after-generation scoring, validation, and baseline-ready dataset construction.
 
-> **Current dataset status:** `official_v1` is ready for baseline training. The train split can be used now, while dev/test/OOD splits are review candidates and should be manually checked before being used as final gold evaluation data.
+> **Current dataset status:** `official_v1` is ready for baseline training. The train split can be used now, and final evaluation should use the project-team reviewed dev/test/OOD files under `data/reviewed/`.
 
 ---
 
@@ -62,12 +62,12 @@ The current official dataset version is `official_v1`.
 
 | Item | Count |
 | --- | ---: |
-| Total accepted records | 261 |
-| Train | 129 |
-| Dev review candidates | 31 |
-| Test review candidates | 33 |
-| OOD review candidates | 29 |
-| Not selected | 39 |
+| Total accepted records | 558 |
+| Train | 265 |
+| Dev review candidates | 64 |
+| Test review candidates | 107 |
+| OOD review candidates | 55 |
+| Not selected | 67 |
 | Duplicate IDs | 0 |
 | Duplicate answers | 0 |
 | Train/test leakage | 0 |
@@ -80,21 +80,22 @@ Scores are grouped as low `1–2`, mid `3`, and high `4–5`.
 
 | Aspect | Low | Mid | High |
 | --- | ---: | ---: | ---: |
-| `technical_depth` | 119 | 64 | 78 |
-| `personal_contribution` | 133 | 22 | 106 |
-| `clarity` | 20 | 62 | 179 |
-| `problem_solving` | 135 | 49 | 77 |
-| `impact` | 205 | 30 | 26 |
-| `role_relevance` | 75 | 37 | 149 |
+| `technical_depth` | 236 | 134 | 188 |
+| `personal_contribution` | 269 | 44 | 245 |
+| `clarity` | 44 | 97 | 417 |
+| `problem_solving` | 279 | 93 | 186 |
+| `impact` | 409 | 50 | 99 |
+| `role_relevance` | 137 | 75 | 346 |
 
 ### Generation sources
 
 | Source | Purpose | Clean accepted |
 | --- | --- | ---: |
-| `broad` | Normal mixed junior answers | 135 |
-| `weak_patch` | Targeted weak-label coverage | 100 |
-| `strong_patch` | High-quality patch attempt | 1 |
-| `high_impact_patch` | High-impact coverage repair | 25 |
+| `broad` | Normal mixed junior answers | 270 |
+| `weak_patch` | Targeted weak-label coverage | 175 |
+| `strong_patch` | High-quality patch attempt | 40 |
+| `high_impact_patch` | High-impact coverage repair | 35 |
+| `diversity_patch` | Missing and rare label coverage repair | 38 |
 
 ---
 
@@ -153,9 +154,18 @@ data/
     dev_human_reviewed.jsonl
     test_human_reviewed.jsonl
     ood_test_human_reviewed.jsonl
+    dev_project_team_reviewed.jsonl
+    test_project_team_reviewed.jsonl
+    ood_project_team_reviewed.jsonl
+    manual_review_audit.jsonl
+    manual_review_summary.md
+    manual_review_summary.json
+    manual_review_sheet.csv
   reports/
     data_quality.md
     data_quality.json
+    manual_review_quality.md
+    manual_review_quality.json
     course_bot_final_dataset_report.md
 ```
 
@@ -167,9 +177,15 @@ Important files:
 | `data/processed/dev_review_candidates.jsonl` | Candidate dev split; requires manual review before final evaluation. |
 | `data/processed/test_review_candidates.jsonl` | Candidate test split; requires manual review before final evaluation. |
 | `data/processed/ood_test_review_candidates.jsonl` | Candidate OOD test split; requires manual review before final evaluation. |
+| `data/reviewed/dev_project_team_reviewed.jsonl` | Project-team reviewed dev evaluation split. |
+| `data/reviewed/test_project_team_reviewed.jsonl` | Project-team reviewed test evaluation split. |
+| `data/reviewed/ood_project_team_reviewed.jsonl` | Project-team reviewed OOD evaluation split. |
+| `data/reviewed/manual_review_audit.jsonl` | Project-team review audit trail for confirmed, corrected, and excluded candidates. |
 | `data/raw/full_synthetic_all.jsonl` | Merged official records before final processed exports. |
 | `data/reports/data_quality.md` | Human-readable dataset quality report. |
 | `data/reports/data_quality.json` | Machine-readable dataset quality report. |
+| `data/reports/manual_review_quality.md` | Human-readable quality report for reviewed evaluation files. |
+| `data/reports/manual_review_quality.json` | Machine-readable quality report for reviewed evaluation files. |
 
 ---
 

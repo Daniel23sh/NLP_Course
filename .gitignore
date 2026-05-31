@@ -9,5 +9,19 @@ synthetic_interview_data/data/raw/**/*.jsonl
 synthetic_interview_data/data/processed/**/*.jsonl
 synthetic_interview_data/data/reviewed/**/*.jsonl
 
+# Keep generated/intermediate JSONL data ignored, but track the canonical
+# artifacts needed to reproduce the reviewed evaluation set.
+!synthetic_interview_data/data/raw/full_synthetic_all.jsonl
+!synthetic_interview_data/data/processed/full_synthetic_clean_accepted.jsonl
+!synthetic_interview_data/data/processed/train.jsonl
+!synthetic_interview_data/data/processed/dev_review_candidates.jsonl
+!synthetic_interview_data/data/processed/test_review_candidates.jsonl
+!synthetic_interview_data/data/processed/ood_test_review_candidates.jsonl
+!synthetic_interview_data/data/processed/not_selected.jsonl
+!synthetic_interview_data/data/reviewed/dev_project_team_reviewed.jsonl
+!synthetic_interview_data/data/reviewed/test_project_team_reviewed.jsonl
+!synthetic_interview_data/data/reviewed/ood_project_team_reviewed.jsonl
+!synthetic_interview_data/data/reviewed/manual_review_audit.jsonl
+
 synthetic_interview_data/results/
 synthetic_interview_data/outputs/

@@ -31,11 +31,20 @@ interview_answer_scoring/
 │   ├── reviewed/
 │   │   ├── dev_human_reviewed.jsonl
 │   │   ├── test_human_reviewed.jsonl
-│   │   └── ood_test_human_reviewed.jsonl
+│   │   ├── ood_test_human_reviewed.jsonl
+│   │   ├── dev_project_team_reviewed.jsonl
+│   │   ├── test_project_team_reviewed.jsonl
+│   │   ├── ood_project_team_reviewed.jsonl
+│   │   ├── manual_review_audit.jsonl
+│   │   ├── manual_review_summary.md
+│   │   ├── manual_review_summary.json
+│   │   └── manual_review_sheet.csv
 │   │
 │   └── reports/
 │       ├── data_quality.json
 │       ├── data_quality.md
+│       ├── manual_review_quality.json
+│       ├── manual_review_quality.md
 │       └── course_bot_final_dataset_report.md
 │
 ├── src/

@@ -89,19 +89,19 @@ Summary from the latest accepted dataset:
 
 | Item | Count |
 | --- | ---: |
-| Total accepted records | 261 |
-| Train | 129 |
-| Dev review candidates | 31 |
-| Test review candidates | 33 |
-| OOD review candidates | 29 |
-| Not selected | 39 |
+| Total accepted records | 558 |
+| Train | 265 |
+| Dev review candidates | 64 |
+| Test review candidates | 107 |
+| OOD review candidates | 55 |
+| Not selected | 67 |
 | Duplicate IDs | 0 |
 | Duplicate answers | 0 |
 | Train/test leakage | 0 |
 | OOD/train leakage | 0 |
 | Accepted labeler-validator delta `>= 2` | 0 |
 
-The train split is ready for baseline synthetic training. Dev/test/OOD splits are review candidates and should be manually checked before final reported evaluation.
+The train split is ready for baseline synthetic training. The original dev/test/OOD splits are synthetic review candidates. For final evaluation, use the project-team reviewed files under `synthetic_interview_data/data/reviewed/`. These files were checked using the project rubric, with unsupported labels corrected and one near-duplicate example excluded. They are project-level reviewed evaluation sets, not external expert annotations.
 
 ## Data Methodology
 
@@ -177,3 +177,5 @@ OPENAI_MAX_RETRIES=2
 | `synthetic_interview_data/src/labeler.py` | Rubric labeler. |
 | `synthetic_interview_data/src/validator.py` | Independent validator and routing logic. |
 | `synthetic_interview_data/src/merge_datasets.py` | Merge, balance, split, and leakage-safe export. |
+| `synthetic_interview_data/data/reviewed/*_project_team_reviewed.jsonl` | Project-team reviewed dev/test/OOD evaluation files. |
+| `synthetic_interview_data/data/reviewed/manual_review_audit.jsonl` | Audit trail for confirmed, corrected, and excluded evaluation candidates. |

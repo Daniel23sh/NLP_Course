@@ -1,6 +1,6 @@
 # Official Synthetic Interview Dataset
 
-This directory contains the frozen `official_v1` synthetic dataset for the junior developer interview-answer scoring project. The dataset is ready for baseline training, but the review splits are not gold evaluation data until they are manually checked.
+This directory contains the frozen `official_v1` synthetic dataset for the junior developer interview-answer scoring project. The train split is ready for baseline training, and final evaluation should use the project-team reviewed dev/test/OOD files under `data/reviewed/`.
 
 ## Project Task
 
@@ -46,32 +46,34 @@ Older `v2`, `v3`, and `v4` paths were experimental development stages. They are 
 
 - `data/raw/`: raw merged official records and intermediate generation-phase outputs.
 - `data/processed/`: train/dev/test/OOD splits and processed status buckets.
-- `data/reviewed/`: human-reviewed dev/test/OOD files, created after manual review.
+- `data/reviewed/`: project-team reviewed dev/test/OOD files, created after rubric-based manual review.
 - `data/reports/`: quality reports and course-facing summaries.
 
 ## Generation Phases
 
 - `broad`: realistic normal, mixed-quality, and strong junior project answers.
 - `weak_patch`: targeted examples for missing weak labels such as low role relevance, low technical depth, low clarity, low impact, and absent personal contribution.
-- `strong_patch`: attempted high-quality examples. This phase produced only one clean accepted official example, but it is preserved for traceability.
+- `strong_patch`: targeted high-quality examples preserved for traceability and strong-answer coverage.
 - `high_impact_patch`: targeted repair for high-impact examples after impact high coverage was identified as the final blocker.
+- `diversity_patch`: accepted missing-label examples added to improve rare low and mid score coverage in the training split.
 
 Current generation sources:
 
-- `broad`: 135
-- `weak_patch`: 100
-- `strong_patch`: 1
-- `high_impact_patch`: 25
+- `broad`: 270
+- `weak_patch`: 175
+- `strong_patch`: 40
+- `high_impact_patch`: 35
+- `diversity_patch`: 38
 
 ## Final Official Counts
 
-- Dataset size: 261
-- Accepted records: 261
-- Train: 129
-- Dev review candidates: 31
-- Test review candidates: 33
-- OOD test review candidates: 29
-- Not selected: 39
+- Dataset size: 558
+- Accepted records: 558
+- Train: 265
+- Dev review candidates: 64
+- Test review candidates: 107
+- OOD test review candidates: 55
+- Not selected: 67
 - Duplicate IDs: 0
 - Duplicate answers: 0
 - Train/test leakage: none
@@ -84,12 +86,12 @@ Low means scores `1-2`, mid means score `3`, and high means scores `4-5`.
 
 | Aspect | Low | Mid | High |
 | --- | ---: | ---: | ---: |
-| `technical_depth` | 119 | 64 | 78 |
-| `personal_contribution` | 133 | 22 | 106 |
-| `clarity` | 20 | 62 | 179 |
-| `problem_solving` | 135 | 49 | 77 |
-| `impact` | 205 | 30 | 26 |
-| `role_relevance` | 75 | 37 | 149 |
+| `technical_depth` | 236 | 134 | 188 |
+| `personal_contribution` | 269 | 44 | 245 |
+| `clarity` | 44 | 97 | 417 |
+| `problem_solving` | 279 | 93 | 186 |
+| `impact` | 409 | 50 | 99 |
+| `role_relevance` | 137 | 75 | 346 |
 
 ## Impact Repair Note
 
@@ -97,12 +99,12 @@ High-impact coverage was the last serious blocker before baseline training. The 
 
 Final impact distribution:
 
-- `impact = 1`: 25
-- `impact = 2`: 180
-- `impact = 3`: 30
-- `impact = 4`: 17
-- `impact = 5`: 9
-- High impact total: 26
+- `impact = 1`: 75
+- `impact = 2`: 334
+- `impact = 3`: 50
+- `impact = 4`: 74
+- `impact = 5`: 25
+- High impact total: 99
 
 ## File Guide
 
@@ -117,29 +119,40 @@ Final impact distribution:
 - `data/processed/full_synthetic_manual_review.jsonl`: manual-review bucket for the final merge. Currently empty for `official_v1`.
 - `data/processed/full_synthetic_profile_mismatch.jsonl`: profile-mismatch bucket for the final merge. Currently empty for `official_v1`.
 - `data/processed/full_synthetic_rejected.jsonl`: rejected/audit bucket for the final merge. Currently empty for `official_v1`.
-- `data/reviewed/dev_human_reviewed.jsonl`: manually reviewed development labels, created before final evaluation.
-- `data/reviewed/test_human_reviewed.jsonl`: manually reviewed test labels, created before final evaluation.
-- `data/reviewed/ood_test_human_reviewed.jsonl`: manually reviewed OOD labels, created before final evaluation.
+- `data/reviewed/dev_project_team_reviewed.jsonl`: project-team reviewed development evaluation labels.
+- `data/reviewed/test_project_team_reviewed.jsonl`: project-team reviewed test evaluation labels.
+- `data/reviewed/ood_project_team_reviewed.jsonl`: project-team reviewed OOD evaluation labels.
+- `data/reviewed/manual_review_audit.jsonl`: audit trail for confirmed, corrected, and excluded evaluation candidates.
+- `data/reviewed/manual_review_summary.md`: human-readable summary of the project-team review.
+- `data/reviewed/manual_review_summary.json`: machine-readable summary of the project-team review.
+- `data/reviewed/manual_review_sheet.csv`: transparent inspection sheet for project-team review decisions.
+- `data/reviewed/dev_human_reviewed.jsonl`: legacy placeholder for manually reviewed development labels.
+- `data/reviewed/test_human_reviewed.jsonl`: legacy placeholder for manually reviewed test labels.
+- `data/reviewed/ood_test_human_reviewed.jsonl`: legacy placeholder for manually reviewed OOD labels.
 - `data/reports/data_quality.md`: human-readable quality report.
 - `data/reports/data_quality.json`: machine-readable quality report.
+- `data/reports/manual_review_quality.md`: quality report for reviewed evaluation files.
+- `data/reports/manual_review_quality.json`: machine-readable quality report for reviewed evaluation files.
 - `data/reports/course_bot_final_dataset_report.md`: course-facing final dataset summary.
 
 ## Readiness
 
 - Usable for synthetic training: yes.
 - Ready to start baseline training: yes.
-- Usable for final evaluation without manual labels: no.
-- Manual review required for dev/test/OOD: yes.
+- Original dev/test/OOD usable for final evaluation without manual review: no.
+- Reviewed dev/test/OOD usable for project-level final evaluation: yes.
+- Manual review required for original dev/test/OOD candidates: yes.
 
-The train split can be used for baseline training. Dev, test, and OOD files must be manually reviewed or corrected before final reported evaluation.
+The train split can be used for baseline training. The original dev/test/OOD files remain synthetic review candidates. For final evaluation, use the project-team reviewed files under `data/reviewed/`. These reviewed files were checked using the project rubric, with unsupported labels corrected and unsuitable examples excluded. They should be treated as project-level reviewed evaluation sets, not as external expert annotations.
 
 ## Known Limitations
 
 - Synthetic data may contain generation-style bias.
 - Exact 1-5 scoring is subjective, even with rubric evidence.
-- Dev/test/OOD are review candidates, not gold labels.
+- Original dev/test/OOD are review candidates, not reviewed evaluation labels.
+- Reviewed dev/test/OOD files are project-team reviewed, not external expert annotations.
 - Impact remains relatively skewed low even after repair.
-- Clarity score `1` is absent, but low clarity is represented by score `2`.
+- Exact low clarity and low role-relevance cases are still rarer than high clarity and relevance cases, but they are now represented.
 - Some exact extreme scores are rare, so reports should include both exact-score metrics and low/mid/high band metrics.
 
 ## Recommended Next Steps
@@ -149,7 +162,7 @@ The train split can be used for baseline training. Dev, test, and OOD files must
 3. Build a rule-based baseline.
 4. Build zero-shot and few-shot LLM baselines.
 5. Train the first supervised model.
-6. Manually review dev/test/OOD before final evaluation.
+6. Use the project-team reviewed dev/test/OOD files for final evaluation.
 7. Report exact-score metrics, low/mid/high metrics, weak-aspect metrics, and error analysis.
 
 ## Reproduction Commands
