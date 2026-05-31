@@ -174,9 +174,9 @@ Important files:
 | File | Use |
 | --- | --- |
 | `data/processed/train.jsonl` | Main synthetic training split. |
-| `data/processed/dev_review_candidates.jsonl` | Candidate dev split; requires manual review before final evaluation. |
-| `data/processed/test_review_candidates.jsonl` | Candidate test split; requires manual review before final evaluation. |
-| `data/processed/ood_test_review_candidates.jsonl` | Candidate OOD test split; requires manual review before final evaluation. |
+| `data/processed/dev_review_candidates.jsonl` | Original synthetic dev review-candidate split, preserved for traceability. |
+| `data/processed/test_review_candidates.jsonl` | Original synthetic test review-candidate split, preserved for traceability. |
+| `data/processed/ood_test_review_candidates.jsonl` | Original synthetic OOD review-candidate split, preserved for traceability. |
 | `data/reviewed/dev_project_team_reviewed.jsonl` | Project-team reviewed dev evaluation split. |
 | `data/reviewed/test_project_team_reviewed.jsonl` | Project-team reviewed test evaluation split. |
 | `data/reviewed/ood_project_team_reviewed.jsonl` | Project-team reviewed OOD evaluation split. |
@@ -272,6 +272,17 @@ Run tests:
 python3 -m unittest discover -s tests -v
 ```
 
+## Baseline Experiments
+
+Run initial baselines:
+
+```bash
+cd synthetic_interview_data
+python3 scripts/run_baselines.py
+```
+
+This evaluates majority and TF-IDF logistic regression baselines on the project-team reviewed dev/test/OOD files.
+
 Run a cheap mock build:
 
 ```bash
@@ -344,16 +355,23 @@ Ready to use now:
 | File | Status |
 | --- | --- |
 | `data/processed/train.jsonl` | Usable for baseline synthetic training. |
+| `data/reviewed/dev_project_team_reviewed.jsonl` | Project-team reviewed dev evaluation split. |
+| `data/reviewed/test_project_team_reviewed.jsonl` | Project-team reviewed test evaluation split. |
+| `data/reviewed/ood_project_team_reviewed.jsonl` | Project-team reviewed OOD evaluation split. |
 | `data/reports/data_quality.md` | Usable for methodology and dataset-quality discussion. |
 | `data/reports/data_quality.json` | Usable for programmatic checks. |
+| `data/reports/manual_review_quality.md` | Usable for reviewed evaluation quality discussion. |
+| `data/reports/manual_review_quality.json` | Usable for programmatic reviewed-evaluation checks. |
 
-Not final gold yet:
+Original review-candidate files:
 
-| File | Required action |
+| File | Current role |
 | --- | --- |
-| `data/processed/dev_review_candidates.jsonl` | Manually review and save corrected labels under `data/reviewed/`. |
-| `data/processed/test_review_candidates.jsonl` | Manually review and save corrected labels under `data/reviewed/`. |
-| `data/processed/ood_test_review_candidates.jsonl` | Manually review and save corrected labels under `data/reviewed/`. |
+| `data/processed/dev_review_candidates.jsonl` | Synthetic pre-review source for the reviewed dev split. |
+| `data/processed/test_review_candidates.jsonl` | Synthetic pre-review source for the reviewed test split. |
+| `data/processed/ood_test_review_candidates.jsonl` | Synthetic pre-review source for the reviewed OOD split. |
+
+The original dev/test/OOD files under `data/processed/` are synthetic review candidates and are preserved for traceability. For final evaluation, use the project-team reviewed files under `data/reviewed/`. These reviewed files were checked with the project rubric; unsupported impact labels were corrected and one near-duplicate example was excluded. They are project-level reviewed evaluation sets, not external expert annotations.
 
 Recommended evaluation metrics:
 
@@ -372,8 +390,8 @@ Recommended evaluation metrics:
 - The dataset is synthetic, so answers may contain generation-style bias.
 - Scores from `1` to `5` are subjective even with a detailed rubric.
 - The `impact` aspect is skewed toward low scores, although high-impact coverage was improved for baseline training.
-- `clarity = 1` is absent in `official_v1`; low clarity is represented by score `2`.
-- Dev/test/OOD files are review candidates, not final gold evaluation labels.
-- Results from supervised models should be presented as baseline findings until human-reviewed evaluation labels are available.
+- Low clarity and low role-relevance cases are still less common than high clarity and relevance cases, even though they are represented in `official_v1`.
+- Original dev/test/OOD files are synthetic review candidates; final evaluation should use the project-team reviewed files under `data/reviewed/`.
+- Results from supervised models should be presented as baseline findings on project-team reviewed evaluation data, not as claims from external expert annotation.
 
 ---

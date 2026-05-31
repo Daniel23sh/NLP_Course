@@ -103,6 +103,22 @@ Summary from the latest accepted dataset:
 
 The train split is ready for baseline synthetic training. The original dev/test/OOD splits are synthetic review candidates. For final evaluation, use the project-team reviewed files under `synthetic_interview_data/data/reviewed/`. These files were checked using the project rubric, with unsupported labels corrected and one near-duplicate example excluded. They are project-level reviewed evaluation sets, not external expert annotations.
 
+### Reviewed Evaluation Files
+
+The original dev/test/OOD files under `synthetic_interview_data/data/processed/` are preserved as synthetic review-candidate sources. Final evaluation should use:
+
+- `synthetic_interview_data/data/reviewed/dev_project_team_reviewed.jsonl` (`64` records)
+- `synthetic_interview_data/data/reviewed/test_project_team_reviewed.jsonl` (`106` records)
+- `synthetic_interview_data/data/reviewed/ood_project_team_reviewed.jsonl` (`55` records)
+
+The final reviewed evaluation size is `225`. These files are project-team reviewed, rubric-based evaluation sets, not external expert annotations. One near-duplicate test candidate was excluded from final evaluation.
+
+### Current Next Step: Baseline Experiments
+
+`official_v1` is frozen for baseline work: use `train.jsonl` for training and the reviewed dev/test/OOD files for evaluation. The next project stage is baseline/model comparison, including majority, rule-based, TF-IDF/classical ML, zero-shot LLM, few-shot LLM, and supervised encoder baselines.
+
+Recommended metrics are exact score accuracy per aspect, low/mid/high macro-F1, ordinal MAE, weak-aspect precision/recall/F1, confusion matrices, OOD performance drop, and qualitative error analysis.
+
 ## Data Methodology
 
 The pipeline uses label-after-generation:
