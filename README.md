@@ -153,6 +153,37 @@ Run tests:
 python3 -m unittest discover -s tests -v
 ```
 
+Run classical baseline reports:
+
+```bash
+python3 scripts/run_baselines.py
+```
+
+Run LLM baseline plumbing without API calls:
+
+```bash
+python3 scripts/run_llm_baselines.py \
+  --mode all \
+  --splits dev \
+  --dry-run \
+  --limit 5 \
+  --output-dir /private/tmp/llm_baseline_smoke
+```
+
+Run a small real LLM smoke test intentionally:
+
+```bash
+python3 scripts/run_llm_baselines.py \
+  --mode all \
+  --splits dev \
+  --limit 5 \
+  --model gpt-5.4-mini \
+  --output-dir /private/tmp/llm_baseline_real_smoke
+```
+
+The committed real LLM baseline reports live under `synthetic_interview_data/data/reports/llm_baseline_results.*`.
+Replacing them requires an intentional full API run with `--confirm-cost --force`, may cost money, and should not be done for routine smoke tests.
+
 Run a cheap mock build:
 
 ```bash

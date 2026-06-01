@@ -283,6 +283,33 @@ python3 scripts/run_baselines.py
 
 This evaluates majority and TF-IDF logistic regression baselines on the project-team reviewed dev/test/OOD files.
 
+## LLM Baselines
+
+Run zero-shot and few-shot LLM baseline plumbing in dry-run mode. Write smoke outputs outside the repository so they cannot overwrite committed real results:
+
+```bash
+cd synthetic_interview_data
+python3 scripts/run_llm_baselines.py \
+  --mode all \
+  --splits dev \
+  --dry-run \
+  --limit 5 \
+  --output-dir /private/tmp/llm_baseline_smoke
+```
+
+Run a small real API smoke test intentionally:
+
+```bash
+python3 scripts/run_llm_baselines.py \
+  --mode all \
+  --splits dev \
+  --limit 5 \
+  --model gpt-5.4-mini \
+  --output-dir /private/tmp/llm_baseline_real_smoke
+```
+
+Real LLM runs require `OPENAI_API_KEY` and may cost money. Full real evaluations over dev/test/OOD require `--confirm-cost`; overwriting existing LLM report files requires `--force`. The current real LLM baseline artifacts are kept under `data/reports/llm_baseline_results.json` and `data/reports/llm_baseline_results.md`. The next modeling stages are error analysis and a supervised encoder baseline.
+
 Run a cheap mock build:
 
 ```bash
