@@ -336,6 +336,17 @@ python3 scripts/run_error_analysis.py \
   --top-n-examples 20
 ```
 
+## Final Visualizations
+
+Generate course-ready figures and summary tables from existing reports:
+
+```bash
+cd synthetic_interview_data
+python3 scripts/make_final_visuals.py \
+  --output-dir data/visuals \
+  --format png
+```
+
 Run a cheap mock build:
 
 ```bash
