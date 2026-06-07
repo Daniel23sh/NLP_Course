@@ -1,0 +1,6 @@
+model,mean_exact_accuracy_delta,mean_mae_delta,weak_aspect_f1_delta
+majority,-0.0588,0.804,-0.1089
+tfidf_logistic_regression,-0.2977,0.3666,0.099
+zero-shot,-0.0577,0.0864,0.059
+few-shot,-0.0504,0.1457,0.0426
+encoder,-0.3898,0.3724,0.0027
