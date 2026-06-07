@@ -325,6 +325,17 @@ python3 scripts/run_encoder_baseline.py \
   --output-dir /tmp/encoder_baseline_smoke
 ```
 
+## Error Analysis
+
+Run the reproducible error-analysis report over existing baseline artifacts:
+
+```bash
+cd synthetic_interview_data
+python3 scripts/run_error_analysis.py \
+  --output-dir data/reports \
+  --top-n-examples 20
+```
+
 Run a cheap mock build:
 
 ```bash
