@@ -1,0 +1,58 @@
+{
+  "visuals_version": "v1",
+  "format": "png",
+  "input_paths": {
+    "baseline_report": "data/reports/baseline_results.json",
+    "llm_report": "data/reports/llm_baseline_results.json",
+    "encoder_report": "data/reports/encoder_baseline_results.json",
+    "error_report": "data/reports/error_analysis_results.json",
+    "train": "data/processed/train.jsonl",
+    "dev": "data/reviewed/dev_project_team_reviewed.jsonl",
+    "test": "data/reviewed/test_project_team_reviewed.jsonl",
+    "ood": "data/reviewed/ood_project_team_reviewed.jsonl"
+  },
+  "figures": [
+    {
+      "filename": "model_comparison_mean_exact.png",
+      "description": "Mean exact accuracy by model and split."
+    },
+    {
+      "filename": "model_comparison_mae.png",
+      "description": "Mean absolute error by model and split."
+    },
+    {
+      "filename": "weak_aspect_f1_by_model.png",
+      "description": "Weak-aspect F1 by model and split."
+    },
+    {
+      "filename": "ood_drop_by_model.png",
+      "description": "OOD deltas relative to reviewed test."
+    },
+    {
+      "filename": "encoder_per_aspect_errors.png",
+      "description": "Encoder per-aspect error patterns."
+    },
+    {
+      "filename": "dataset_split_counts.png",
+      "description": "Official dataset split counts."
+    }
+  ],
+  "tables": [
+    {
+      "filename": "model_comparison_table.csv",
+      "description": "Normalized model metric comparison."
+    },
+    {
+      "filename": "ood_drop_table.csv",
+      "description": "OOD minus reviewed-test metric deltas."
+    },
+    {
+      "filename": "encoder_aspect_error_table.csv",
+      "description": "Encoder per-aspect MAE and severe-error rates."
+    },
+    {
+      "filename": "dataset_split_table.csv",
+      "description": "Official train/dev/test/OOD split counts."
+    }
+  ]
+}
