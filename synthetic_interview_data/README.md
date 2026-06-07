@@ -310,6 +310,21 @@ python3 scripts/run_llm_baselines.py \
 
 Real LLM runs require `OPENAI_API_KEY` and may cost money. Full real evaluations over dev/test/OOD require `--confirm-cost`; overwriting existing LLM report files requires `--force`. The current real LLM baseline artifacts are kept under `data/reports/llm_baseline_results.json` and `data/reports/llm_baseline_results.md`. The next modeling stages are error analysis and a supervised encoder baseline.
 
+## Supervised Encoder Baseline
+
+Run a small supervised encoder smoke test:
+
+```bash
+cd synthetic_interview_data
+python3 scripts/run_encoder_baseline.py \
+  --model-name distilbert-base-uncased \
+  --epochs 1 \
+  --batch-size 4 \
+  --limit-train 20 \
+  --limit-eval 10 \
+  --output-dir /tmp/encoder_baseline_smoke
+```
+
 Run a cheap mock build:
 
 ```bash
