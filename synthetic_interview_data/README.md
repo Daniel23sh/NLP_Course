@@ -6,7 +6,7 @@ For the full project overview, start with the root [README.md](../README.md). Th
 
 The task is to convert a free-text interview answer into a structured quality assessment across six rubric aspects. This package focuses on controlled synthetic data generation, label-after-generation scoring, validation, and baseline-ready dataset construction.
 
-> **Current dataset status:** `official_v1` is ready for baseline training. The train split can be used now, and final evaluation should use the project-team reviewed dev/test/OOD files under `data/reviewed/`.
+> **Current project status:** `official_v1` is frozen. Classical, LLM, supervised encoder, error-analysis, and visualization artifacts are committed, and final evaluation uses the project-team reviewed dev/test/OOD files under `data/reviewed/`.
 
 ---
 
@@ -166,7 +166,17 @@ data/
     data_quality.json
     manual_review_quality.md
     manual_review_quality.json
-    course_bot_final_dataset_report.md
+    baseline_results.md
+    baseline_results.json
+    llm_baseline_results.md
+    llm_baseline_results.json
+    encoder_baseline_results.md
+    encoder_baseline_results.json
+    error_analysis_results.md
+    error_analysis_results.json
+  visuals/
+    visuals_summary.md
+    visuals_manifest.json
 ```
 
 Important files:
@@ -186,6 +196,11 @@ Important files:
 | `data/reports/data_quality.json` | Machine-readable dataset quality report. |
 | `data/reports/manual_review_quality.md` | Human-readable quality report for reviewed evaluation files. |
 | `data/reports/manual_review_quality.json` | Machine-readable quality report for reviewed evaluation files. |
+| `data/reports/baseline_results.md` | Majority and TF-IDF logistic regression baseline results. |
+| `data/reports/llm_baseline_results.md` | Zero-shot and few-shot LLM baseline results. |
+| `data/reports/encoder_baseline_results.md` | Supervised encoder baseline results. |
+| `data/reports/error_analysis_results.md` | Reproducible error-analysis report. |
+| `data/visuals/visuals_summary.md` | Index of final visualization artifacts. |
 
 ---
 
@@ -308,7 +323,7 @@ python3 scripts/run_llm_baselines.py \
   --output-dir /private/tmp/llm_baseline_real_smoke
 ```
 
-Real LLM runs require `OPENAI_API_KEY` and may cost money. Full real evaluations over dev/test/OOD require `--confirm-cost`; overwriting existing LLM report files requires `--force`. The current real LLM baseline artifacts are kept under `data/reports/llm_baseline_results.json` and `data/reports/llm_baseline_results.md`. The next modeling stages are error analysis and a supervised encoder baseline.
+Real LLM runs require `OPENAI_API_KEY` and may cost money. Full real evaluations over dev/test/OOD require `--confirm-cost`; overwriting existing LLM report files requires `--force`. The current real LLM baseline artifacts are kept under `data/reports/llm_baseline_results.json` and `data/reports/llm_baseline_results.md`. Supervised encoder, error-analysis, and final visualization artifacts are also committed under `data/reports/` and `data/visuals/`.
 
 ## Supervised Encoder Baseline
 
@@ -426,6 +441,11 @@ Ready to use now:
 | `data/reports/data_quality.json` | Usable for programmatic checks. |
 | `data/reports/manual_review_quality.md` | Usable for reviewed evaluation quality discussion. |
 | `data/reports/manual_review_quality.json` | Usable for programmatic reviewed-evaluation checks. |
+| `data/reports/baseline_results.md` | Majority and TF-IDF baseline results. |
+| `data/reports/llm_baseline_results.md` | Zero-shot and few-shot LLM baseline results. |
+| `data/reports/encoder_baseline_results.md` | Supervised encoder baseline results. |
+| `data/reports/error_analysis_results.md` | Error-analysis findings and top examples. |
+| `data/visuals/visuals_summary.md` | Summary of final generated figures and tables. |
 
 Original review-candidate files:
 
