@@ -229,6 +229,7 @@ From the repository root:
 
 ```bash
 cd synthetic_interview_data
+pip install -r requirements.txt
 ```
 
 Run tests:
