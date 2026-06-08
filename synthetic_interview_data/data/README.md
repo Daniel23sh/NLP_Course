@@ -133,7 +133,6 @@ Final impact distribution:
 - `data/reports/data_quality.json`: machine-readable quality report.
 - `data/reports/manual_review_quality.md`: quality report for reviewed evaluation files.
 - `data/reports/manual_review_quality.json`: machine-readable quality report for reviewed evaluation files.
-- `data/reports/course_bot_final_dataset_report.md`: course-facing final dataset summary.
 
 ## Readiness
 
@@ -154,16 +153,6 @@ The train split can be used for baseline training. The original dev/test/OOD fil
 - Impact remains relatively skewed low even after repair.
 - Exact low clarity and low role-relevance cases are still rarer than high clarity and relevance cases, but they are now represented.
 - Some exact extreme scores are rare, so reports should include both exact-score metrics and low/mid/high band metrics.
-
-## Recommended Next Steps
-
-1. Freeze `official_v1`.
-2. Start baseline training.
-3. Build a rule-based baseline.
-4. Build zero-shot and few-shot LLM baselines.
-5. Train the first supervised model.
-6. Use the project-team reviewed dev/test/OOD files for final evaluation.
-7. Report exact-score metrics, low/mid/high metrics, weak-aspect metrics, and error analysis.
 
 ## Reproduction Commands
 
